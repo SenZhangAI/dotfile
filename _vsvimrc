@@ -1,0 +1,72 @@
+" @see https://github.com/jaredpar/vsvim/wiki/settings-reference
+
+" set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for ms-windows
+behave mswin
+
+set nocompatible
+source $vimruntime/vimrc_example.vim
+source $vimruntime/mswin.vim
+
+set novsvim_useeditordefault
+set novsvim_useeditorindent
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => general
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable running auto commands
+set vsvim_autocmd
+
+" backspace and cursor keys wrap to previous/next line
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+set clipboard+=unnamed
+
+" sets how many lines of history vim has to remember
+set history=700
+
+set hlsearch
+set ignorecase
+set incsearch
+
+set nojoinspaces
+
+" for regular expressions turn magic on
+set magic
+
+set mousemodel=popup
+
+set scrolloff=3
+
+set selection=exclusive
+
+set smartcase
+
+" don't use default startofline, it will move cursor to first nonspace char when jump
+set nostartofline
+
+set timeout
+set timeoutlen=500
+
+set autoindent
+set expandtab
+set number
+
+set cursorline
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => key mapping
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+let g:mapleader = ","
+
+imap jk <esc>
+
+nmap <c-]> :vsc edit.gotodefinition<cr>
+
+nmap <cr> :nohl<cr>
+
+" backspace and cursor keys wrap to previous/next line
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+
+" backspace in visual mode deletes selection
+vnoremap <bs> d
