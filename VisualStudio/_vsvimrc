@@ -61,7 +61,7 @@ let g:mapleader = ","
 
 imap jk <esc>
 
-nmap <c-]> :vsc edit.gotodefinition<cr>
+nmap <C-]> :vsc Edit.GotoDefinition<cr>
 nmap ,n :vsc View.SolutionExplorer<cr>
 vmap \\ :vsc Edit.CommentSelection<cr>
 vmap ,\\ :vsc Edit.UncommentSelection<cr>
