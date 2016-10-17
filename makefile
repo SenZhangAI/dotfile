@@ -12,7 +12,12 @@ endif
 # $(1) source file
 # $(2) target file
 define copy
-		$(if $(wildcard $(1)), @cp -i -p -u $(1) $(2), \
+		$(if $(wildcard $(1)), \
+
+				@echo "    Copy $(1) to $(2);"
+				@cp -i -p -u $(1) $(2); \
+				echo  "    Copy Done.", \
+
 				@echo $(1) "is not exist.")
 endef
 
