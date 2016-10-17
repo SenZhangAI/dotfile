@@ -23,6 +23,9 @@ endef
 
 .PHONY: all config pull pull_visual_studio config_vsvim
 
+SUBLIME_TEXT_TARGET_FILE = $(shell cygpath $$USERPROFILE)/AppData/Roaming/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
+SUBLIME_TEXT_SOURCE_FILE = ./SublimeText/Preferences.sublime-settings
+
 VSVIMRC_TARGET_FILE = $(shell cygpath $$USERPROFILE)/_vsvimrc
 VSVIMRC_SOURCE_FILE = ./VisualStudio/_vsvimrc
 VSSETTING_TARGET_FILE = $(shell cygpath -O)/Visual\ Studio\ 2015/Settings/Sen.vssettings
@@ -31,9 +34,25 @@ VSSETTING_SOURCE_FILE = ./VisualStudio/Sen.vssettings
 # BASIC commend
 all: config
 
-config: config_visual_studio
+config: config_visual_studio config_sublime_text
 
-pull: pull_visual_studio
+pull: pull_visual_studio pull_sublime_text
+
+## Config Sublime Text
+config_sublime_text:
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "Config Sublime Text..."
+		$(call copy, $(SUBLIME_TEXT_SOURCE_FILE), $(SUBLIME_TEXT_TARGET_FILE))
+else
+endif
+
+## Pull Sublime Text
+pull_sublime_text:
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "Pull Sublime Text..."
+		$(call copy, $(SUBLIME_TEXT_TARGET_FILE), $(SUBLIME_TEXT_SOURCE_FILE))
+else
+endif
 
 ## Config Visual Studio
 config_visual_studio: config_vsvim
