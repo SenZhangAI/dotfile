@@ -25,6 +25,8 @@ endef
 
 VSVIMRC_TARGET_FILE = $(shell cygpath $$USERPROFILE)/_vsvimrc
 VSVIMRC_SOURCE_FILE = ./VisualStudio/_vsvimrc
+VSSETTING_TARGET_FILE = $(shell cygpath -O)/Visual\ Studio\ 2015/Settings/Sen.vssettings
+VSSETTING_SOURCE_FILE = ./VisualStudio/Sen.vssettings
 
 # BASIC commend
 all: config
@@ -35,9 +37,19 @@ pull: pull_visual_studio
 
 ## Config Visual Studio
 config_visual_studio: config_vsvim
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "Config VS-Settings..."
+		$(call copy, $(VSSETTING_SOURCE_FILE), $(VSSETTING_TARGET_FILE))
+else
+endif
 
 ## Pull Visual Studio
 pull_visual_studio: pull_vsvim
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "Pull VS-Settings..."
+		$(call copy, $(VSSETTING_TARGET_FILE), $(VSSETTING_SOURCE_FILE))
+else
+endif
 
 ### Config vsvim
 config_vsvim:
