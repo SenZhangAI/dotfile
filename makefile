@@ -31,12 +31,15 @@ VSVIMRC_SOURCE_FILE = ./VisualStudio/_vsvimrc
 VSSETTING_TARGET_FILE = $(shell cygpath -O)/Visual\ Studio\ 2015/Settings/Sen.vssettings
 VSSETTING_SOURCE_FILE = ./VisualStudio/Sen.vssettings
 
+IDEAVIMRC_TARGET_FILE_WIN = $(shell cygpath $$USERPROFILE)/_ideavimrc
+IDEAVIMRC_SOURCE_FILE = ./JetBrain/ideavim.vim
+
 # BASIC commend
 all: config
 
-config: config_visual_studio config_sublime_text
+config: config_visual_studio config_sublime_text config_jetbrain
 
-pull: pull_visual_studio pull_sublime_text
+pull: pull_visual_studio pull_sublime_text pull_jetbrain
 
 ## Config Sublime Text
 config_sublime_text:
@@ -57,7 +60,7 @@ endif
 ## Config Visual Studio
 config_visual_studio: config_vsvim
 ifeq ($(OS_TYPE),Cygwin)
-		@echo "Config VS-Settings..."
+		@echo "# Config VS-Settings..."
 		$(call copy, $(VSSETTING_SOURCE_FILE), $(VSSETTING_TARGET_FILE))
 else
 endif
@@ -65,7 +68,7 @@ endif
 ## Pull Visual Studio
 pull_visual_studio: pull_vsvim
 ifeq ($(OS_TYPE),Cygwin)
-		@echo "Pull VS-Settings..."
+		@echo "# Pull VS-Settings..."
 		$(call copy, $(VSSETTING_TARGET_FILE), $(VSSETTING_SOURCE_FILE))
 else
 endif
@@ -73,7 +76,7 @@ endif
 ### Config vsvim
 config_vsvim:
 ifeq ($(OS_TYPE),Cygwin)
-		@echo "Config VsVim..."
+		@echo "  * Config VsVim..."
 		$(call copy, $(VSVIMRC_SOURCE_FILE), $(VSVIMRC_TARGET_FILE))
 else
 endif
@@ -81,7 +84,30 @@ endif
 ### Pull vsvim
 pull_vsvim:
 ifeq ($(OS_TYPE),Cygwin)
-		@echo "Pull VsVim..."
+		@echo "  * Pull VsVim..."
 		$(call copy, $(VSVIMRC_TARGET_FILE), $(VSVIMRC_SOURCE_FILE))
+else
+endif
+
+## Config JetBrain
+config_jetbrain: config_ideavim
+
+## Pull JetBrain
+pull_jetbrain: pull_ideavim
+
+### Config IDEAVIM
+config_ideavim:
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "  * Config IDEAVim..."
+		$(call copy, $(IDEAVIMRC_SOURCE_FILE), $(IDEAVIMRC_TARGET_FILE_WIN))
+else
+endif
+
+
+### Pull IDEAVIM
+pull_ideavim:
+ifeq ($(OS_TYPE),Cygwin)
+		@echo "  * Pull IDEAVim..."
+		$(call copy, $(IDEAVIMRC_TARGET_FILE_WIN), $(IDEAVIMRC_SOURCE_FILE))
 else
 endif
