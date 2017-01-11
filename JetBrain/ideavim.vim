@@ -16,7 +16,11 @@ nnoremap <Space> :nohlsearch<CR>
 inoremap jk <Esc>
 
 " Comment
-nnoremap \\ :action CommentByLineComment<CR>
+nnoremap \\\\ :action CommentByLineComment<CR>
 
 " Reformat
 nnoremap ,af :action ReformatCode<CR>
+
+" Tab
+nnoremap <left> gT
+nnoremap <right> gt
