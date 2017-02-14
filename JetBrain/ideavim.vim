@@ -24,3 +24,7 @@ nnoremap ,af :action ReformatCode<CR>
 " Tab
 nnoremap <left> gT
 nnoremap <right> gt
+
+" move line up and down
+nmap gk mz:m-2<cr>`z
+nmap gj mz:m+<cr>`z
