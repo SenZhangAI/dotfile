@@ -26,5 +26,7 @@ nnoremap <left> gT
 nnoremap <right> gt
 
 " move line up and down
-nmap gk mz:m-2<cr>`z
-nmap gj mz:m+<cr>`z
+nnoremap gk mz:m-2<cr>`z
+nnoremap gj mz:m+<cr>`z
+
+nnoremap <CR> :nohl<CR>
