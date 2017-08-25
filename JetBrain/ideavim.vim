@@ -9,6 +9,8 @@ set scrolloff=3
 set history=100000
 set clipboard+=unnamed
 
+set surround " ideavim special for ys,cs,ds,S
+
 let mapleader=";"
 " important! using :actionlist find out all actions
 
@@ -23,7 +25,7 @@ nnoremap \\\\ :action CommentByLineComment<CR>
 
 " Reformat
 nnoremap <leader>af :action ReformatCode<CR>
-nnoremap <leader>gaf :action GoFmtFileAction<CR>
+"nnoremap <leader>af :action GoFmtFileAction<CR>
 
 " Tab
 nnoremap <left> gT
