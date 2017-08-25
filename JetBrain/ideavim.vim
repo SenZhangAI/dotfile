@@ -9,6 +9,9 @@ set scrolloff=3
 set history=100000
 set clipboard+=unnamed
 
+let mapleader=";"
+" important! using :actionlist find out all actions
+
 " clear the highlighted search result
 nnoremap <Space> :nohlsearch<CR>
 
@@ -19,7 +22,8 @@ inoremap jk <Esc>
 nnoremap \\\\ :action CommentByLineComment<CR>
 
 " Reformat
-nnoremap ,af :action ReformatCode<CR>
+nnoremap <leader>af :action ReformatCode<CR>
+nnoremap <leader>gaf :action GoFmtFileAction<CR>
 
 " Tab
 nnoremap <left> gT
