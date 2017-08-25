@@ -25,7 +25,6 @@ nnoremap \\\\ :action CommentByLineComment<CR>
 
 " Reformat
 nnoremap <leader>af :action ReformatCode<CR>
-"nnoremap <leader>af action GoFmtFileAction<CR>
 
 " Tab
 nnoremap <left> gT
